@@ -1,5 +1,6 @@
 import com.diffplug.gradle.spotless.FormatExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
+import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.kyori.indra.IndraExtension
 import net.kyori.indra.licenser.spotless.HeaderFormat
@@ -14,8 +15,11 @@ plugins {
   id("com.gradleup.shadow")
   id("net.kyori.indra")
   id("net.kyori.indra.git")
-  id("net.kyori.indra.publishing")
   id("org.jetbrains.gradle.plugin.idea-ext")
+}
+
+if (project.name.endsWith("api")) {
+  plugins.apply("net.kyori.indra.publishing")
 }
 
 val libs = project.the<LibrariesForLibs>()
@@ -47,11 +51,10 @@ repositories {
   maven("https://repo.mizule.dev/testing")
   snapshotRepo("https://repo.jpenilla.xyz/snapshots")
   maven("https://repo.papermc.io/repository/maven-public/")
-  maven("https://repo.lucko.me/")
 }
 
 extensions.configure<IndraExtension> {
-  github("MineLimit", "FastBoard")
+  github("powercasgamer", "FastBoard")
   mitLicense()
 
   javaVersions {
@@ -85,6 +88,7 @@ extensions.configure<IndraExtension> {
   } else {
     publishReleasesTo("mizule", "https://repo.mizule.dev/releases")
     publishSnapshotsTo("mizule", "https://repo.mizule.dev/snapshots")
+    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/development")
   }
 }
 
@@ -93,8 +97,8 @@ extensions.getByType<BasePluginExtension>().archivesName.set(project.name)
 
 fun ShadowJar.configureStandard() {
   dependencies {
-//    exclude(dependency("org.jetbrains.kotlin:.*:.*"))
-    exclude(dependency("org.slf4j:.*:.*"))
+    exclude(dependency("org.jetbrains:annotations"))
+    exclude(dependency("org.jspecify:jspecify"))
   }
 
   exclude(
@@ -112,9 +116,14 @@ fun ShadowJar.configureStandard() {
   mergeServiceFiles()
 }
 
+extensions.configure(ShadowExtension::class) {
+  this.addShadowVariantIntoJavaComponent = false
+}
+
 tasks.withType<ShadowJar>().configureEach {
   archiveClassifier.set(null as String?)
   configureStandard()
+  this.addMultiReleaseAttribute = true
 
   inputs.property("noRelocate", noRelocate)
   if (!noRelocate) {
