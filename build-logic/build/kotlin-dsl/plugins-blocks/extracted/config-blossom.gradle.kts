@@ -1,8 +1,0 @@
-                                         
-                                               
-                                                         
-                        
-
-plugins {
-  id("net.kyori.blossom")
-}

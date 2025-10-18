@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.mrmicky.fastboard"},{"l":"fr.mrmicky.fastboard.adventure"}];updateSearchResults();
