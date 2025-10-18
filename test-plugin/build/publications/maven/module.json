@@ -1,0 +1,121 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.mizule",
+    "module": "fastboard-test-plugin",
+    "version": "3.0.0-testing-v2-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.1.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-slim.jar",
+          "url": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-slim.jar",
+          "size": 301,
+          "sha512": "fcabc332b2f83855b99b102274bba0031a893f9a30a11d9ac761344639b5772cc784df39b0af7636b1858d50714f60cd6a4e06922ac38b224957cb7e1ffe7415",
+          "sha256": "720fa8719a018145bddaa450df34115f1df7ded49c7efd896ec178903fb1fd41",
+          "sha1": "ee7b35b52ae3ad97b576e9f8579a2e3489991df9",
+          "md5": "beffdf26ba2858bfa053700e04102567"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-slim.jar",
+          "url": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-slim.jar",
+          "size": 301,
+          "sha512": "fcabc332b2f83855b99b102274bba0031a893f9a30a11d9ac761344639b5772cc784df39b0af7636b1858d50714f60cd6a4e06922ac38b224957cb7e1ffe7415",
+          "sha256": "720fa8719a018145bddaa450df34115f1df7ded49c7efd896ec178903fb1fd41",
+          "sha1": "ee7b35b52ae3ad97b576e9f8579a2e3489991df9",
+          "md5": "beffdf26ba2858bfa053700e04102567"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-javadoc.jar",
+          "url": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-javadoc.jar",
+          "size": 261,
+          "sha512": "1487e5a20c9e4d74f298e07c42e96a61be11b7a768c3fbc199ee138cd68e1fc2267d1cfe3f11f288acc05df755315344d052cc5f6f751f126ab4fe1caa5125ea",
+          "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3",
+          "sha1": "2ad14aed781c4a73ed4dbb421966d408a0a06686",
+          "md5": "f43436d6bec321290f6af228ad602604"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-sources.jar",
+          "url": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT-sources.jar",
+          "size": 261,
+          "sha512": "1487e5a20c9e4d74f298e07c42e96a61be11b7a768c3fbc199ee138cd68e1fc2267d1cfe3f11f288acc05df755315344d052cc5f6f751f126ab4fe1caa5125ea",
+          "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3",
+          "sha1": "2ad14aed781c4a73ed4dbb421966d408a0a06686",
+          "md5": "f43436d6bec321290f6af228ad602604"
+        }
+      ]
+    },
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT.jar",
+          "url": "fastboard-test-plugin-3.0.0-testing-v2-SNAPSHOT.jar",
+          "size": 333,
+          "sha512": "7b5e418ff2ae8a2dac418fee426c5ff365f77ebf08f94c2b95ddc84230b8429c3afd475aaab4fc451b7e844d0ca0907bdc33ba62c931d7e1a8bb02274794cbf7",
+          "sha256": "035343013511d3150b7ac5bd798797a67fdd02678db4a2de0df5d5de40c5ece4",
+          "sha1": "cb707546b3293aadd7dce8aab8a46f9d633e33ce",
+          "md5": "ba91f579ff8d39ced553f569e493f0db"
+        }
+      ]
+    }
+  ]
+}

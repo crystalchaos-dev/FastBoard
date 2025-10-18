@@ -1,0 +1,121 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.mizule",
+    "module": "fastboard",
+    "version": "3.0.0-testing-v1-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.1.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "fastboard-3.0.0-testing-v1-SNAPSHOT-slim.jar",
+          "url": "fastboard-3.0.0-testing-v1-SNAPSHOT-slim.jar",
+          "size": 26445,
+          "sha512": "bbafe168bfd47c99ccd5abbb4531b8983a885ff3c59767601da16c564f17fc93e7dc3795cef98a549b99752d8e62b63c6fa9a67c0727e3acfa5810c03f965ae1",
+          "sha256": "5d299967825035457241b676372bfea29a14fb681e970b5ab64ad763cba2c1b6",
+          "sha1": "76b9fdb70e0ee1d1ff9069d655110317719d8713",
+          "md5": "182adfc954b8fe926c55e6c29d15a46a"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-3.0.0-testing-v1-SNAPSHOT-slim.jar",
+          "url": "fastboard-3.0.0-testing-v1-SNAPSHOT-slim.jar",
+          "size": 26445,
+          "sha512": "bbafe168bfd47c99ccd5abbb4531b8983a885ff3c59767601da16c564f17fc93e7dc3795cef98a549b99752d8e62b63c6fa9a67c0727e3acfa5810c03f965ae1",
+          "sha256": "5d299967825035457241b676372bfea29a14fb681e970b5ab64ad763cba2c1b6",
+          "sha1": "76b9fdb70e0ee1d1ff9069d655110317719d8713",
+          "md5": "182adfc954b8fe926c55e6c29d15a46a"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-3.0.0-testing-v1-SNAPSHOT-javadoc.jar",
+          "url": "fastboard-3.0.0-testing-v1-SNAPSHOT-javadoc.jar",
+          "size": 124002,
+          "sha512": "9b69cd59270bf10adb0451d6a64ef04380167fc3ec282ee5681ceba53e435668a725699fbaf3205c731e36131a3e6a605ff415b1f28bd766a85dce667ddbf906",
+          "sha256": "99a6e47755a7598d26007675e1d0fef71233fdf4ce8ece1b3ecf68aa83206771",
+          "sha1": "089faeac648df9e8e7b47a6ead437bc0fbebe987",
+          "md5": "d71c2634c6ecef04a48e29d7c4aa07c2"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-3.0.0-testing-v1-SNAPSHOT-sources.jar",
+          "url": "fastboard-3.0.0-testing-v1-SNAPSHOT-sources.jar",
+          "size": 14509,
+          "sha512": "dde626395e400cfaa1c7c25440f022afd0b8251c2bd4dd5fef50d22e9273749ea1421515f96bb3691e9fb60935af9e9b867a7e65c95a306c876574fbd0537627",
+          "sha256": "aafc2815b7e3cce824cf74394bedba1b147eddeb507b125953ecf784ff937ece",
+          "sha1": "d2be4704e5c23344ce21ab49955ee95e4e76e531",
+          "md5": "32ea9a753870829f649442a29a83e900"
+        }
+      ]
+    },
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fastboard-3.0.0-testing-v1-SNAPSHOT.jar",
+          "url": "fastboard-3.0.0-testing-v1-SNAPSHOT.jar",
+          "size": 26685,
+          "sha512": "7673dd3328e71e5ba1be05fadaca88f53d6701c9629f84bc66e7f3f3cf85036b8591b725b09349bd74fc9176a3dae8ba80564b650d48453b682eac0d3e10a66e",
+          "sha256": "e683645a99e7382edaaf1060254e24ce6c439bf90328ba271889965506a477f6",
+          "sha1": "dcf10772d8846e608d74ad8212396007de851446",
+          "md5": "72090db785b212e6e97c62470e791db9"
+        }
+      ]
+    }
+  ]
+}

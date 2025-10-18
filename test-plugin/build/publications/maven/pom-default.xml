@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- This module was also published with a richer model, Gradle metadata,  -->
+  <!-- which should be used instead. Do not delete the following line which  -->
+  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+  <!-- that they should prefer consuming it instead. -->
+  <!-- do_not_remove: published-with-gradle-metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dev.mizule</groupId>
+  <artifactId>fastboard-test-plugin</artifactId>
+  <version>3.0.0-testing-v2-SNAPSHOT</version>
+  <name>fastboard-test-plugin</name>
+  <description>Lightweight packet-based scoreboard API for Bukkit plugins.</description>
+  <url>https://github.com/MineLimit/FastBoard</url>
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>MrMicky</name>
+      <email>git[at]mrmicky.fr</email>
+      <url>https://mrmicky.fr</url>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>powercas_gamer</name>
+      <email>cas@mizule.dev</email>
+      <url>https://github.com/powercasgamer</url>
+    </contributor>
+  </contributors>
+  <scm>
+    <connection>scm:git:https://github.com/MineLimit/FastBoard.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/MineLimit/FastBoard.git</developerConnection>
+    <url>https://github.com/MineLimit/FastBoard</url>
+  </scm>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/MineLimit/FastBoard/issues</url>
+  </issueManagement>
+  <ciManagement />
+</project>
