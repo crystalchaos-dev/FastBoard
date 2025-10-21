@@ -73,8 +73,7 @@ extensions.configure<IndraExtension> {
       }
       contributors {
         contributor {
-          this.
-          name.set("powercas_gamer")
+          this.name.set("powercas_gamer")
           email.set("cas@mizule.dev")
           url.set("https://github.com/powercasgamer")
         }
@@ -114,6 +113,10 @@ fun ShadowJar.configureStandard() {
   )
 
   mergeServiceFiles()
+  // Needed for mergeServiceFiles to work properly in Shadow 9+
+  filesMatching("META-INF/services/**") {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+  }
 }
 
 extensions.configure(ShadowExtension::class) {
