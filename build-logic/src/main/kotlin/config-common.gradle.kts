@@ -85,12 +85,11 @@ extensions.configure<IndraExtension> {
     publishReleasesTo("maven", "https://repo.mizule.dev/releases")
     publishSnapshotsTo("maven", "https://repo.mizule.dev/snapshots")
     publishReleasesTo("mizule", "https://maven.crabstudios.org/releases")
-    publishSnapshotsTo("mizule", "https://repo.mizule.dev/development")
+    publishAllTo("mizule", "https://maven.crabstudios.org/releases")
   } else {
     publishReleasesTo("mizule", "https://repo.mizule.dev/releases")
     publishSnapshotsTo("mizule", "https://repo.mizule.dev/snapshots")
-    publishReleasesTo("mizule", "https://maven.crabstudios.org/releases")
-    publishSnapshotsTo("mizule", "https://repo.mizule.dev/development")
+    publishAllTo("mizule", "https://maven.crabstudios.org/releases")
   }
 }
 
