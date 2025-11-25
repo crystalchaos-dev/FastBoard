@@ -89,7 +89,8 @@ extensions.configure<IndraExtension> {
   } else {
     publishReleasesTo("mizule", "https://repo.mizule.dev/releases")
     publishSnapshotsTo("mizule", "https://repo.mizule.dev/snapshots")
-    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/development")
+    publishReleasesTo("mizule", "https://maven.crabstudios.org/releases")
+    publishSnapshotsTo("mizule", "https://repo.mizule.dev/development")
   }
 }
 
