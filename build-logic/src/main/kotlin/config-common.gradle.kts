@@ -54,7 +54,7 @@ repositories {
 }
 
 extensions.configure<IndraExtension> {
-  github("powercasgamer", "FastBoard")
+  github("crystalchaos-dev", "FastBoard")
   mitLicense()
 
   javaVersions {
@@ -81,14 +81,17 @@ extensions.configure<IndraExtension> {
     }
   }
 
+  val repo: Provider<String> = indraGit.branchName().map { branch ->
+    if (branch == "dev") "development" else "releases"
+  }
   if (project.ci()) {
 //    publishReleasesTo("CrystalChaos", "https://maven.crabstudios.org/releases")
 //    publishSnapshotsTo("CrystalChaos", "https://maven.crabstudios.org/development")
-    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/releases")
+    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/${repo.get()}")
   } else {
 //    publishReleasesTo("CrystalChaos", "https://maven.crabstudios.org/releases")
 //    publishSnapshotsTo("CrystalChaos", "https://maven.crabstudios.org/development")
-    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/releases")
+    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/${repo.get()}")
   }
 }
 
