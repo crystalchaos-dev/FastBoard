@@ -25,6 +25,7 @@ paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
 # build
 build-blossom = { module = "net.kyori:blossom", version.ref = "blossom" }
 build-indra = { module = "net.kyori:indra-common", version.ref = "indra" }
+build-indra-git = { module = "net.kyori:indra-git", version.ref = "indra" }
 build-indra-crossdoc = { module = "net.kyori:indra-crossdoc", version.ref = "indra" }
 build-indra-spotless = { module = "net.kyori:indra-licenser-spotless", version.ref = "indra" }
 build-testLogger = "com.adarshr:gradle-test-logger-plugin:4.0.0"

@@ -6,8 +6,9 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.build.indra)
-    implementation(libs.build.indra.crossdoc)
+//    implementation(libs.build.indra)
+//    implementation(libs.build.indra.crossdoc)
+    implementation(libs.build.indra.git)
     implementation(libs.build.indra.spotless)
     implementation(libs.build.blossom)
     implementation(libs.build.testLogger)

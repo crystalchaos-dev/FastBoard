@@ -2,7 +2,6 @@ import com.diffplug.gradle.spotless.FormatExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.kyori.indra.IndraExtension
 import net.kyori.indra.licenser.spotless.HeaderFormat
 import net.kyori.indra.licenser.spotless.IndraSpotlessLicenserExtension
 import org.gradle.accessors.dm.LibrariesForLibs
@@ -13,13 +12,13 @@ import java.util.Date
 plugins {
   id("java-library")
   id("com.gradleup.shadow")
-  id("net.kyori.indra")
+//  id("net.kyori.indra")
   id("net.kyori.indra.git")
   id("org.jetbrains.gradle.plugin.idea-ext")
 }
 
 if (project.name.endsWith("api")) {
-  plugins.apply("maven-publish")
+  project.pluginManager.apply("maven-publish")
 }
 
 val libs = project.the<LibrariesForLibs>()
@@ -53,63 +52,45 @@ repositories {
   maven("https://repo.papermc.io/repository/maven-public/")
 }
 
-extensions.configure<IndraExtension> {
-  github("crystalchaos-dev", "FastBoard")
-  mitLicense()
-
-  javaVersions {
-    target(21)
-    minimumToolchain(21)
+extensions.configure<JavaPluginExtension> {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(21))
   }
-
-  configurePublications {
-    pom {
-      developers {
-        developer {
-          name.set("MrMicky")
-          email.set("git[at]mrmicky.fr")
-          url.set("https://mrmicky.fr")
-        }
-      }
-      contributors {
-        contributor {
-          this.name.set("powercas_gamer")
-          email.set("cas@mizule.dev")
-          url.set("https://github.com/powercasgamer")
-        }
-      }
-    }
-  }
+  withJavadocJar()
+  withSourcesJar()
 }
 
-val repo: Provider<String> = indraGit.branchName().map { branch ->
-  if (branch == "dev") "development" else "releases"
-}
-
-if (plugins.hasPlugin("maven-publish")) {
-  val publishing = extensions.getByType<PublishingExtension>()
-  publishing.repositories {
-    repositories {
-      maven {
-        name = "CrystalChaos"
-        url = uri("https://maven.crabstudios.org/${repo.get()}")
-        credentials(PasswordCredentials::class)
-      }
-    }
-  }
-
-  publishing.publications {
-    register<MavenPublication>("mavenJava") {
-      from(components["java"])
-
-      artifact(tasks.named<Jar>("sourcesJar"))
-      artifact(tasks.named<Jar>("javadocJar"))
-    }
-  }
-}
+//extensions.configure<IndraExtension> {
+//  github("crystalchaos-dev", "FastBoard")
+//  mitLicense()
+//
+//  javaVersions {
+//    target(21)
+//    minimumToolchain(21)
+//  }
+//
+//  configurePublications {
+//    pom {
+//      developers {
+//        developer {
+//          name.set("MrMicky")
+//          email.set("git[at]mrmicky.fr")
+//          url.set("https://mrmicky.fr")
+//        }
+//      }
+//      contributors {
+//        contributor {
+//          this.name.set("powercas_gamer")
+//          email.set("cas@mizule.dev")
+//          url.set("https://github.com/powercasgamer")
+//        }
+//      }
+//    }
+//  }
+//}
 
 // Override Indra’s default archive name
-extensions.getByType<BasePluginExtension>().archivesName.set(project.name)
+//extensions.getByType<BasePluginExtension>().archivesName.set(project.name)
 
 fun ShadowJar.configureStandard() {
   dependencies {
@@ -275,4 +256,31 @@ tasks.withType<JavaCompile>().configureEach {
 tasks.withType<ProcessResources>().configureEach {
   filteringCharset = "UTF-8"
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+val repo: Provider<String> = indraGit.branchName().map { branch ->
+  if (branch == "dev") "development" else "releases"
+}
+
+if (project.pluginManager.hasPlugin("maven-publish")) {
+  logger.lifecycle("Configuring publishing to CrystalChaos repository on branch ${indraGit.branchName().get()}")
+  val publishing = extensions.getByType<PublishingExtension>()
+  publishing.repositories {
+    logger.lifecycle("Configuring CrystalChaos repository at https://maven.crabstudios.org/${repo.get()}")
+      maven {
+        name = "CrystalChaos"
+        url = uri("https://maven.crabstudios.org/${repo.get()}")
+        credentials(PasswordCredentials::class)
+    }
+  }
+
+  publishing.publications {
+    register<MavenPublication>("mavenJava") {
+      logger.lifecycle("Configuring Maven publication with sources and javadoc jars")
+      from(components["java"])
+
+      artifact(tasks.named<Jar>("sourcesJar"))
+      artifact(tasks.named<Jar>("javadocJar"))
+    }
+  }
 }
