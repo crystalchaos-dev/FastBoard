@@ -278,9 +278,6 @@ if (project.pluginManager.hasPlugin("maven-publish")) {
     register<MavenPublication>("mavenJava") {
       logger.lifecycle("Configuring Maven publication with sources and javadoc jars")
       from(components["java"])
-
-      artifact(tasks.named<Jar>("sourcesJar"))
-      artifact(tasks.named<Jar>("javadocJar"))
     }
   }
 }
