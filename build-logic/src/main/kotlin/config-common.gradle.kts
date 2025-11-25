@@ -267,11 +267,17 @@ if (project.pluginManager.hasPlugin("maven-publish")) {
   val publishing = extensions.getByType<PublishingExtension>()
   publishing.repositories {
     logger.lifecycle("Configuring CrystalChaos repository at https://maven.crabstudios.org/${repo.get()}")
-      maven {
-        name = "CrystalChaos"
-        url = uri("https://maven.crabstudios.org/${repo.get()}")
-        credentials(PasswordCredentials::class)
+    maven {
+      name = "CrystalChaos"
+      url = uri("https://maven.crabstudios.org/${repo.get()}")
+      credentials(PasswordCredentials::class)
     }
+    logger.lifecycle(
+      """
+      Username Env: ${System.getenv("CrystalChaosUsername")}
+      Username prop: ${findProperty("CrystalChaosUsername")}
+    """.trimIndent()
+    )
   }
 
   publishing.publications {
