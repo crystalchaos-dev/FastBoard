@@ -270,14 +270,11 @@ if (project.pluginManager.hasPlugin("maven-publish")) {
     maven {
       name = "CrystalChaos"
       url = uri("https://maven.crabstudios.org/${repo.get()}")
-      credentials(PasswordCredentials::class)
+      credentials(PasswordCredentials::class) {
+        username = project.findProperty("CrystalChaosUsername") as String
+        password = project.findProperty("CrystalChaosPassword") as String
+      }
     }
-    logger.lifecycle(
-      """
-      Username Env: ${System.getenv("CrystalChaosUsername")}
-      Username prop: ${findProperty("CrystalChaosUsername")}
-    """.trimIndent()
-    )
   }
 
   publishing.publications {
