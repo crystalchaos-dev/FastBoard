@@ -84,6 +84,8 @@ extensions.configure<IndraExtension> {
   if (project.ci()) {
     publishReleasesTo("maven", "https://repo.mizule.dev/releases")
     publishSnapshotsTo("maven", "https://repo.mizule.dev/snapshots")
+    publishReleasesTo("mizule", "https://maven.crabstudios.org/releases")
+    publishSnapshotsTo("mizule", "https://repo.mizule.dev/development")
   } else {
     publishReleasesTo("mizule", "https://repo.mizule.dev/releases")
     publishSnapshotsTo("mizule", "https://repo.mizule.dev/snapshots")
