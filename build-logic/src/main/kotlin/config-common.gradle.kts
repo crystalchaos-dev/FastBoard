@@ -19,7 +19,7 @@ plugins {
 }
 
 if (project.name.endsWith("api")) {
-  plugins.apply("net.kyori.indra.publishing")
+  plugins.apply("maven-publish")
 }
 
 val libs = project.the<LibrariesForLibs>()
@@ -80,18 +80,31 @@ extensions.configure<IndraExtension> {
       }
     }
   }
+}
 
-  val repo: Provider<String> = indraGit.branchName().map { branch ->
-    if (branch == "dev") "development" else "releases"
+val repo: Provider<String> = indraGit.branchName().map { branch ->
+  if (branch == "dev") "development" else "releases"
+}
+
+if (plugins.hasPlugin("maven-publish")) {
+  val publishing = extensions.getByType<PublishingExtension>()
+  publishing.repositories {
+    repositories {
+      maven {
+        name = "CrystalChaos"
+        url = uri("https://maven.crabstudios.org/${repo.get()}")
+        credentials(PasswordCredentials::class)
+      }
+    }
   }
-  if (project.ci()) {
-//    publishReleasesTo("CrystalChaos", "https://maven.crabstudios.org/releases")
-//    publishSnapshotsTo("CrystalChaos", "https://maven.crabstudios.org/development")
-    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/${repo.get()}")
-  } else {
-//    publishReleasesTo("CrystalChaos", "https://maven.crabstudios.org/releases")
-//    publishSnapshotsTo("CrystalChaos", "https://maven.crabstudios.org/development")
-    publishAllTo("CrystalChaos", "https://maven.crabstudios.org/${repo.get()}")
+
+  publishing.publications {
+    register<MavenPublication>("mavenJava") {
+      from(components["java"])
+
+      artifact(tasks.named<Jar>("sourcesJar"))
+      artifact(tasks.named<Jar>("javadocJar"))
+    }
   }
 }
 
