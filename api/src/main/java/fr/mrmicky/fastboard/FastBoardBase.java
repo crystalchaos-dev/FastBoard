@@ -1,7 +1,9 @@
 /*
  * This file is part of FastBoard, licensed under the MIT License.
  *
- * Copyright (c) 2019-2023 MrMicky
+ * Copyright (c) 2019-2025 MrMicky
+ * Copyright (c) 2019-2025 powercas_gamer
+ * Copyright (c) 2019-2025 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +35,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
@@ -81,6 +84,10 @@ public abstract class FastBoardBase<T> {
     private static final Object ENUM_SB_ACTION_REMOVE;
     private static final Object ENUM_VISIBILITY_ALWAYS;
     private static final Object ENUM_COLLISION_RULE_ALWAYS;
+
+    public static boolean queuePackets = false;
+
+    private final Queue<Object> packetQueue = new ConcurrentLinkedQueue<>();
 
     static {
         try {
@@ -602,6 +609,8 @@ public abstract class FastBoardBase<T> {
             sendObjectivePacket(ObjectiveMode.REMOVE);
         } catch (Throwable t) {
             throw new RuntimeException("Unable to delete scoreboard", t);
+        } finally {
+            sendPackets();
         }
 
         this.deleted = true;
@@ -773,10 +782,39 @@ public abstract class FastBoardBase<T> {
             throw new IllegalStateException("This FastBoard is deleted");
         }
 
+        if (queuePackets) {
+            queuePacket(packet);
+            return;
+        }
+
         if (this.player.isOnline()) {
             Object entityPlayer = PLAYER_GET_HANDLE.invoke(this.player);
             Object playerConnection = PLAYER_CONNECTION.invoke(entityPlayer);
             SEND_PACKET.invoke(playerConnection, packet);
+        }
+    }
+
+    private void queuePacket(final Object packet) {
+        this.packetQueue.add(packet);
+    }
+
+    private void sendPacketNow(final Object packet) throws Throwable {
+        if (this.deleted) return;
+        if (this.player.isConnected()) {
+            final Object entityPlayer = PLAYER_GET_HANDLE.invoke(this.player);
+            final Object playerConnection = PLAYER_CONNECTION.invoke(entityPlayer);
+            SEND_PACKET.invoke(playerConnection, packet);
+        }
+    }
+
+    public void sendPackets() {
+        while (!this.packetQueue.isEmpty()) {
+            final Object packet = this.packetQueue.poll();
+            try {
+                sendPacketNow(packet);
+            } catch (final Throwable t) {
+                throw new RuntimeException("Unable to send queued packet", t);
+            }
         }
     }
 
